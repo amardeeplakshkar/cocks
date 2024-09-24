@@ -3,7 +3,7 @@ type CardProps = {
   username?: string;
   amount?: number;
   rank: string;
-  bg?: any;
+  bg?: string;
 };
 
 const getRandomColor = () => {
@@ -16,7 +16,6 @@ const getRandomColor = () => {
 };
 
 const Card = ({ username = "Cocks User", amount, rank, bg }: CardProps) => {
-  const displayName = username;
   const randomColor = getRandomColor();
   return (
     <div
