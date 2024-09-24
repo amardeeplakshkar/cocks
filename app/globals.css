@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Disable text selection */
 * {
   -webkit-touch-callout: none; /* Safari */
   -webkit-user-select: none; /* Chrome/Safari */
@@ -10,8 +9,9 @@
   -ms-user-select: none; /* IE/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
 }
-.no-event{
+.no-interaction {
   pointer-events: none;
+  user-select: none;
 }
 :root {
   --background: #ffffff;
