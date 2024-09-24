@@ -1,12 +1,23 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaChartSimple } from 'react-icons/fa6'
 import { GoHome } from 'react-icons/go'
 import { HiOutlineUserGroup } from 'react-icons/hi'
 
-const Footer = () => {
+const Footer : React.FC = () => {
+  useEffect(() => {
+    const handleContextMenu = (event: MouseEvent) => {
+      event.preventDefault();
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
   return (
-    <footer className="absolute bottom-0 w-full flex  justify-between items-center p-4">
+    <footer className="no-event  absolute bottom-0 w-full flex  justify-between items-center p-4">
       <Link href={"/"}>
       <div className="gap-1 flex flex-col items-center justify-center">
       <GoHome className="" />

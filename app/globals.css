@@ -2,8 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
-  user-select: none;
+/* Disable text selection */
+* {
+  -webkit-touch-callout: none; /* Safari */
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+}
+.no-event{
+  pointer-events: none;
 }
 :root {
   --background: #ffffff;
