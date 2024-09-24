@@ -1,3 +1,4 @@
+"use client";
 import Card from "@/components/Card";
 import Logo from "@/app/logo.png";
 import Image from "next/image";
