@@ -4,12 +4,18 @@ import React from "react";
 import Logo from "./logo.png";
 import Link from "next/link";
 
-const Page = () => {
+const Page : React.FC = () => {
+  const preventInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <main className="p-3">
         <div className="flex flex-col justify-center items-center">
-          <Image src={Logo} alt="Cocks Logo" height={150} width={150} />
+          <Image src={Logo} alt="Cocks Logo" height={150} width={150} onContextMenu={preventInteraction}
+        onTouchStart={preventInteraction}
+        draggable={false}/>
           <h3 className="text-xl font-bold pb-4">X COCKS</h3>
           <section className="rounded-lg w-full bg-white/10 p-3">
             <h4 className="uppercase font-bold">cocks community</h4>
