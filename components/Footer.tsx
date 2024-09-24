@@ -4,7 +4,7 @@ import { FaChartSimple } from 'react-icons/fa6'
 import { GoHome } from 'react-icons/go'
 import { HiOutlineUserGroup } from 'react-icons/hi'
 
-const Footer : React.FC = () => {
+const Footer: React.FC = () => {
   useEffect(() => {
     // Only run the DOM manipulation on the client side
     if (typeof window !== 'undefined') {
@@ -15,7 +15,7 @@ const Footer : React.FC = () => {
           e.preventDefault();
           const href = (link as HTMLElement).getAttribute('data-href');
           if (href) {
-            window.open(href, '_blank', 'noopener,noreferrer');
+            window.open(href, '_self'); // Opens the link in the same tab
           }
         });
       });
@@ -28,28 +28,25 @@ const Footer : React.FC = () => {
       };
     }
   }, []);
+
   return (
-    <footer className="no-event  absolute bottom-0 w-full flex  justify-between items-center p-4">
-      <a data-href={"/"}>
-      <div className="gap-1 flex flex-col items-center justify-center">
-      <GoHome className="" />
+    <footer className="absolute bottom-0 w-full flex justify-between items-center p-4">
+      <div data-href="/" className="gap-1 flex flex-col items-center justify-center cursor-pointer">
+        <GoHome />
         <p className="text-xs">Home</p>
       </div>
-      </a>
-      <a data-href={"/leaderboard"}>
-      <div className="gap-1 flex flex-col items-center justify-center">
-      <FaChartSimple />
+
+      <div data-href="/leaderboard" className="gap-1 flex flex-col items-center justify-center cursor-pointer">
+        <FaChartSimple />
         <p className="text-xs">Leaderboard</p>
       </div>
-      </a>
-      <a data-href={"/friends"}>
-      <div className="gap-1 flex flex-col items-center justify-center">
+
+      <div data-href="/friends" className="gap-1 flex flex-col items-center justify-center cursor-pointer">
         <HiOutlineUserGroup />
         <p className="text-xs">Friends</p>
       </div>
-      </a>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
