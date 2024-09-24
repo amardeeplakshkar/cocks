@@ -7,36 +7,48 @@ import { HiOutlineUserGroup } from 'react-icons/hi'
 
 const Footer : React.FC = () => {
   useEffect(() => {
-    const handleContextMenu = (event: MouseEvent) => {
-      event.preventDefault();
-    };
+    // Only run the DOM manipulation on the client side
+    if (typeof window !== 'undefined') {
+      const links = document.querySelectorAll('[data-href]');
 
-    document.addEventListener('contextmenu', handleContextMenu);
+      links.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = (link as HTMLElement).getAttribute('data-href');
+          if (href) {
+            window.open(href, '_blank', 'noopener,noreferrer');
+          }
+        });
+      });
 
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-    };
+      // Clean up event listeners when the component is unmounted
+      return () => {
+        links.forEach((link) => {
+          link.removeEventListener('click', () => {});
+        });
+      };
+    }
   }, []);
   return (
     <footer className="no-event  absolute bottom-0 w-full flex  justify-between items-center p-4">
-      <Link href={"/"}>
+      <a data-href={"/"}>
       <div className="gap-1 flex flex-col items-center justify-center">
       <GoHome className="" />
         <p className="text-xs">Home</p>
       </div>
-      </Link>
-      <Link href={"/leaderboard"}>
+      </a>
+      <a data-href={"/leaderboard"}>
       <div className="gap-1 flex flex-col items-center justify-center">
       <FaChartSimple />
         <p className="text-xs">Leaderboard</p>
       </div>
-      </Link>
-      <Link href={"/friends"}>
+      </a>
+      <a data-href={"/friends"}>
       <div className="gap-1 flex flex-col items-center justify-center">
         <HiOutlineUserGroup />
         <p className="text-xs">Friends</p>
       </div>
-      </Link>
+      </a>
     </footer>
   )
 }
