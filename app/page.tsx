@@ -13,7 +13,7 @@ const Page : React.FC = () => {
     <>
       <main className="p-3">
         <div className="flex flex-col justify-center items-center">
-          <Image src={Logo} alt="Cocks Logo" height={250} width={250} className="no-interaction" onContextMenu={preventInteraction} 
+          <Image src={Logo} alt="Cocks Logo" height={150} width={150} className="no-interaction" onContextMenu={preventInteraction} 
         onTouchStart={preventInteraction}
         draggable={false}   />
           <h3 className="text-xl font-bold pb-4">X COCKS</h3>
