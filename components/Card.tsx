@@ -31,7 +31,7 @@ const Card = ({ username = "Cocks User", amount, rank, bg }: CardProps) => {
         <div>
           <h4 className="text-sm font-bold">{username}</h4>
           {amount !== undefined && (
-            <h4 className="text-white/30 text-sm font-bold">{`${amount} COCKS`}</h4>
+            <h4 className="text-white/70 text-sm font-bold">{`${amount} COCKS`}</h4>
           )}
         </div>
       </div>

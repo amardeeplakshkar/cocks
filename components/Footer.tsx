@@ -1,29 +1,27 @@
 "use client";
-import React, { useEffect } from 'react'
-import { FaChartSimple } from 'react-icons/fa6'
-import { GoHome } from 'react-icons/go'
-import { HiOutlineUserGroup } from 'react-icons/hi'
+import React, { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { ROUTES } from "@/constants";
 
 const Footer: React.FC = () => {
+  const pathname = usePathname();
   useEffect(() => {
-    // Only run the DOM manipulation on the client side
-    if (typeof window !== 'undefined') {
-      const links = document.querySelectorAll('[data-href]');
+    if (typeof window !== "undefined") {
+      const links = document.querySelectorAll("[data-href]");
 
       links.forEach((link) => {
-        link.addEventListener('click', (e) => {
+        link.addEventListener("click", (e) => {
           e.preventDefault();
-          const href = (link as HTMLElement).getAttribute('data-href');
+          const href = (link as HTMLElement).getAttribute("data-href");
           if (href) {
-            window.open(href, '_self'); // Opens the link in the same tab
+            window.open(href, "_self");
           }
         });
       });
 
-      // Clean up event listeners when the component is unmounted
       return () => {
         links.forEach((link) => {
-          link.removeEventListener('click', () => {});
+          link.removeEventListener("click", () => {});
         });
       };
     }
@@ -31,22 +29,20 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="absolute bottom-0 w-full flex justify-between items-center p-4">
-      <div data-href="/" className="gap-1 flex flex-col items-center justify-center cursor-pointer">
-        <GoHome />
-        <p className="text-xs">Home</p>
-      </div>
-
-      <div data-href="/leaderboard" className="gap-1 flex flex-col items-center justify-center cursor-pointer">
-        <FaChartSimple />
-        <p className="text-xs">Leaderboard</p>
-      </div>
-
-      <div data-href="/friends" className="gap-1 flex flex-col items-center justify-center cursor-pointer">
-        <HiOutlineUserGroup />
-        <p className="text-xs">Friends</p>
-      </div>
+      {ROUTES.map((route) => (
+        <div
+          key={route.href}
+          data-href={route.href}
+          className={`p-2 gap-1 flex flex-col items-center justify-center cursor-pointer ${
+            pathname === route.href ? "text-white" : "text-zinc-600"
+          }`}
+        >
+          <route.icon />
+          <p className="text-xs">{route.label}</p>
+        </div>
+      ))}
     </footer>
   );
-}
+};
 
 export default Footer;

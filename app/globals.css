@@ -3,11 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 * {
-  -webkit-touch-callout: none; /* Safari */
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  user-select: none; 
 }
 .no-interaction {
   pointer-events: none;

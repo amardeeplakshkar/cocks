@@ -43,9 +43,9 @@ const Leaderboard = () => {
           />
         </div>
         <h3 className="place-self-start font-bold text-xl">Top Users</h3>
-        <Card rank="1" amount={160} username="Amardeep" />
-        <Card rank="2" amount={140} username="Priya" />
-        <Card rank="3" username="Shravan" />
+        <Card rank="#1" amount={160} username="Amardeep" />
+        <Card rank="#2" amount={140} username="Priya" />
+        <Card rank="#3" amount={50} username="Shravan" />
       </main>
     </>
   );
