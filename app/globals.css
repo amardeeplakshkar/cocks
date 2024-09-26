@@ -3,7 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark mode media query with custom properties */
+* {
+  @apply select-none; /* Tailwind utility for user-select */
+}
+
+.no-interaction {
+  @apply pointer-events-none select-none; /* Using Tailwind utilities */
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -11,50 +23,13 @@
   }
 }
 
-/* Body styles with custom properties */
 body {
-  color: var(--foreground);
-  background: var(--background);
+  @apply text-foreground bg-background; /* Using Tailwind utilities for text color and background */
   font-family: "Poppins", sans-serif;
 }
 
-/* Tailwind CSS @layer for extending utilities */
 @layer utilities {
   .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* If you need to extend color utilities in Tailwind */
-@layer utilities {
-  .bg-custom-dark {
-    background-color: var(--background);
-  }
-  .text-custom-light {
-    color: var(--foreground);
-  }
-}
-
-/* Make sure these are not overridden by other styles */
-.text-custom-light {
-  color: var(--foreground) !important;
-}
-
-.bg-custom-dark {
-  background-color: var(--background) !important;
-}
-body {
-  background-color: #0a0a0a; /* Dark background */
-  color: #ededed; /* Light text */
-  font-family: "Poppins", sans-serif;
-}
-
-/* No need for media query, we're only handling dark mode */
-@layer utilities {
-  .bg-black {
-    background-color: #0a0a0a !important;
-  }
-  .text-white {
-    color: #ededed !important;
+    text-wrap: balance; /* This is not a Tailwind utility, retains as is */
   }
 }
