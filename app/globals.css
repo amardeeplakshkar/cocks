@@ -43,3 +43,18 @@ body {
 .bg-custom-dark {
   background-color: var(--background) !important;
 }
+body {
+  background-color: #0a0a0a; /* Dark background */
+  color: #ededed; /* Light text */
+  font-family: "Poppins", sans-serif;
+}
+
+/* No need for media query, we're only handling dark mode */
+@layer utilities {
+  .bg-black {
+    background-color: #0a0a0a !important;
+  }
+  .text-white {
+    color: #ededed !important;
+  }
+}
