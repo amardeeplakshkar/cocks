@@ -17,11 +17,3 @@ const config: Config = {
   plugins: [],
 };
 
-module.exports = {
-  darkMode: 'class',
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-export default config;
