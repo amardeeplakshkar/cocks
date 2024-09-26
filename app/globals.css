@@ -1,14 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  @apply select-none; /* Tailwind utility for user-select */
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  user-select: none; 
 }
 
 .no-interaction {
-  @apply pointer-events-none select-none; /* Using Tailwind utilities */
+  pointer-events: none;
+  user-select: none;
 }
 
 :root {
@@ -24,12 +30,12 @@
 }
 
 body {
-  @apply text-foreground bg-background; /* Using Tailwind utilities for text color and background */
+  color: var(--foreground);
+  background: var(--background);
   font-family: "Poppins", sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance; /* This is not a Tailwind utility, retains as is */
-  }
+/* Custom utility for balanced text wrapping */
+.text-balance {
+  text-wrap: balance;
 }
