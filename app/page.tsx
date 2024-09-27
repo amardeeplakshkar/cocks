@@ -27,9 +27,17 @@ const Page: React.FC = () => {
     if (typeof window !== "undefined" && window.Telegram?.WebApp) {
       const tg = window.Telegram.WebApp;
       tg.ready();
-      const initDataUnsafe = tg.initDataUnsafe || {};
 
+      // Log the Telegram WebApp object to check its contents
+      console.log("Telegram WebApp initialized", tg);
+
+      // Get initDataUnsafe and log it
+      const initDataUnsafe = tg.initDataUnsafe || {};
+      console.log("initDataUnsafe", initDataUnsafe);
+
+      // Check if user exists in initDataUnsafe
       if (initDataUnsafe.user) {
+        // Post user data to your API
         fetch("/api/user", {
           method: "POST",
           headers: {
@@ -49,9 +57,11 @@ const Page: React.FC = () => {
             setError("Failed to fetch user data");
           });
       } else {
-        setError("No user data available");
+        // If no user data is available
+        setError("No user data available in initDataUnsafe");
       }
     } else {
+      // If Telegram WebApp is not detected
       setError("This app should be opened in Telegram");
     }
   }, []);
