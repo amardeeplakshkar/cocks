@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
 
     // Return the user data
     return NextResponse.json(user);
-  } catch (error: unknown) {
+  } catch (error) {
     // Explicitly cast error to type `Error`
     console.error('Error processing user data:', error);
 
